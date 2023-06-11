@@ -4,10 +4,10 @@
     "slug": "photo-gallery",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/app/icon.png",
+    "icon": "./src/app/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./src/app/splash.png",
+      "image": "./src/app/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/app/adaptive-icon.png",
+        "foregroundImage": "./src/app/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./src/app/favicon.png"
+      "favicon": "./src/app/images/favicon.png"
     }
   }
 }
