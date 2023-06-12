@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "react-native"],
+  "rules": {
+    "react-native/no-unused-styles": "error",
+    "react-native/split-platform-components": "warn",
+    "react-native/no-inline-styles": "warn",
+    "react-native/no-color-literals": "warn",
+    "react-native/no-raw-text": "error",
+    "react-native/no-single-element-style-arrays": "error"
+  }
+}
