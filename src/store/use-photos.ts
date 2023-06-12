@@ -3,21 +3,28 @@ import { getPhotoListPage, type PhotoDetails } from '@/api/picsum';
 
 export const usePhotos = () => {
   const [photos, setPhotos] = useState<PhotoDetails[]>([]);
+  const [hasMore, sethasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [nextPage, setNextPage] = useState(1);
   const [isFetchRequest, setIsFetchRequest] = useState(true);
 
   useEffect(() => {
-    if (isFetchRequest) {
+    if (isFetchRequest && hasMore) {
       setIsLoading(true);
       getPhotoListPage(nextPage).then((data) => {
-        setPhotos((list) => [...list, ...data]);
+        setPhotos((list) => [...list, ...data.photos]);
+        sethasMore(data.hasMore);
         setNextPage((val) => val + 1);
         setIsLoading(false);
       });
       setIsFetchRequest(false);
     }
-  }, [isFetchRequest, nextPage]);
+  }, [hasMore, isFetchRequest, nextPage]);
 
-  return { photos, isLoading, fetchMore: () => setIsFetchRequest(true) };
+  return {
+    photos,
+    hasMore,
+    isLoading,
+    fetchMore: () => setIsFetchRequest(true),
+  };
 };

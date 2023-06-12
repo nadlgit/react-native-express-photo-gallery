@@ -8,13 +8,25 @@ export type PhotoDetails = {
   height: number;
 };
 
-export async function getPhotoListPage(page = 1): Promise<PhotoDetails[]> {
+export async function getPhotoListPage(
+  page = 1
+): Promise<{ photos: PhotoDetails[]; hasMore: boolean }> {
+  const PAGE_LIMIT = 30;
   try {
-    const res = await fetch(`${BASE_URL}/v2/list?page=${page}`);
+    const res = await fetch(`${BASE_URL}/v2/list?limit=${PAGE_LIMIT}&page=${page}`);
     const data = await res.json();
-    return data.map(({ id, author, url, width, height }) => ({ id, author, url, width, height }));
+    return {
+      photos: data.map(({ id, author, url, width, height }) => ({
+        id,
+        author,
+        url,
+        width,
+        height,
+      })),
+      hasMore: data.length >= PAGE_LIMIT,
+    };
   } catch {
-    return [];
+    return { photos: [], hasMore: false };
   }
 }
 
