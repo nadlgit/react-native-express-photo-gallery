@@ -1,5 +1,6 @@
-import { Dimensions, FlatList, Image } from 'react-native';
+import { Dimensions, FlatList, Image, StyleSheet, Text } from 'react-native';
 import { getPhotoUri, type PhotoDetails } from '@/api/picsum';
+import { PRIMARY_COLOR } from '@/theme';
 
 type PhotoGridProps = { photos: PhotoDetails[]; onGetMore: () => void };
 
@@ -22,6 +23,14 @@ export const PhotoGrid = ({ photos, onGetMore }: PhotoGridProps) => {
       keyExtractor={(item) => item.id}
       numColumns={NUM_COLUMNS}
       onEndReached={onGetMore}
+      ListEmptyComponent={<Text style={styles.text}>No data</Text>}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 32,
+    color: PRIMARY_COLOR,
+  },
+});
