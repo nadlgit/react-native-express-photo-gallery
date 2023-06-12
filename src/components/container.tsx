@@ -1,6 +1,6 @@
-/* eslint-disable react-native/no-color-literals */
 import { type PropsWithChildren } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { BG_COLOR } from '@/theme';
 
 type ContainerProps = PropsWithChildren;
 
@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: BG_COLOR,
   },
 });
